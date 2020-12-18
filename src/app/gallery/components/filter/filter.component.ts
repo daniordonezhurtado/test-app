@@ -19,6 +19,10 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /** Emite un evento cuando el usuario
+  *   escriba en el buscador para actualizar
+  *   la lista de imagenes que vera
+  */
   updateListToShow() {
     this.changeInFilter.emit(this.filterText);
   }

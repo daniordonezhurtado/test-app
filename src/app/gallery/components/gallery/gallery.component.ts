@@ -9,6 +9,7 @@ import { PictureService } from '../../service/picture/picture.service';
 })
 export class GalleryComponent implements OnInit {
 
+  isTest: boolean;
   listPicture: Picture[];
   listPictureToShow: Picture[];
 
@@ -18,9 +19,20 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getListPicture();
+    /**
+     * Debido a la versión de node que uso,
+     * me da un error cuando realizo una llamada al
+     * servicio desde un componente, por ello pongo esta condición
+     */
+    if(!this.isTest) {
+      this.getListPicture();
+    }
   }
 
+  /** Obtiene las imagenes y las mapea en un
+   * objeto que contendra todas y en otro que gestionara
+   * las imagenes que el usuario vera por pantalla
+   */
   getListPicture() {
     this.pictureService.getPicture().subscribe(
       (response) => {
@@ -39,6 +51,9 @@ export class GalleryComponent implements OnInit {
     //console.log(window.pageYOffset);
   }
 
+  /** Actualiza la lista de imagenes que vera el usuario por pantalla
+  *   cuando escriba en el buscador
+  */
   updatePicturesToShow(filterText: string) {
       this.listPictureToShow = filterText ?
         this.listPicture.filter(picture =>

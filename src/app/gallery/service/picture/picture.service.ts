@@ -9,6 +9,7 @@ export class PictureService {
 
   constructor(private httpclient: HttpClient) { }
 
+  /** Servicio para obtener la informacion de las imagenes */
   getPicture(): Observable<any> {
     return this.httpclient.get('./assets/mocks/getImage.json');
   }

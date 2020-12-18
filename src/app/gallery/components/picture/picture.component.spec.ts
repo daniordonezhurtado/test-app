@@ -19,7 +19,7 @@ describe('PictureComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe crearse el cuadro', () => {
     expect(component).toBeTruthy();
   });
 });

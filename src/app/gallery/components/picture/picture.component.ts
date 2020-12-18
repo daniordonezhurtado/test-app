@@ -8,6 +8,7 @@ import { Picture } from '../../model/picture.model';
 })
 export class PictureComponent implements OnInit {
 
+  // Lista de imagenes a mostrar al usuario
   @Input() listPictures: Picture[];
 
   constructor() { }

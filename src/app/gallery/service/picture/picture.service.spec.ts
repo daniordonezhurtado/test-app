@@ -18,4 +18,9 @@ describe('PictureService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('test mockup service to get picture', () => {
+    expect(service.getPicture()).toBeDefined();
+  });
+
 });
