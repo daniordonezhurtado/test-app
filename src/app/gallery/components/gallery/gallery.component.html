@@ -1,0 +1,4 @@
+<app-filter (changeInFilter)="updatePicturesToShow($event)"></app-filter>
+<app-picture (scroll)="onScroll()" class="flex row flex-wrap gallery-container"
+*ngIf="listPicture" [listPictures]="listPictureToShow"></app-picture>
+

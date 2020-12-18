@@ -1,0 +1,4 @@
+<div class="flex column picture-container" *ngFor="let picture of listPictures">
+  <img *ngIf="picture" [src]="picture.photo" alt="{{picture.text}}">
+  <p *ngIf="picture">{{picture.text}}</p>
+</div>
