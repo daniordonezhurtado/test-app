@@ -37,8 +37,8 @@ export class GalleryComponent implements OnInit {
         }
       },
       (error) => {
-        console.log(error);
-        console.log('Ha habido un error');
+        this.listPictures = [];
+        this.listPicturesToShow = [];
       });
   }
 
