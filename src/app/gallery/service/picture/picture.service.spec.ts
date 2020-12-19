@@ -20,7 +20,7 @@ describe('PictureService', () => {
   });
 
   it('test mockup service to get picture', () => {
-    expect(service.getPicture()).toBeDefined();
+    expect(service.getInformationOfPictures()).toBeDefined();
   });
 
 });

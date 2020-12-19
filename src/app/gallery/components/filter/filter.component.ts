@@ -8,22 +8,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class FilterComponent implements OnInit {
 
   @Output()
-  changeInFilter: EventEmitter<string>;
+  changeInFilter: EventEmitter<string>  = new EventEmitter<string>();
 
   filterText: string;
 
-  constructor() {
-    this.changeInFilter = new EventEmitter<string>();
-  }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  /** Emite un evento cuando el usuario
-  *   escriba en el buscador para actualizar
-  *   la lista de imagenes que vera
-  */
-  updateListToShow() {
+  updateListPicturesToShow() {
     this.changeInFilter.emit(this.filterText);
   }
 

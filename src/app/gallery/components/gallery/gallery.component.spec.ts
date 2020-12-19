@@ -35,6 +35,8 @@ describe('GalleryComponent', () => {
     fixture = TestBed.createComponent(GalleryComponent);
     component = fixture.componentInstance;
     component.isTest = true;
+    component.listPictures = [];
+    component.listPicturesToShow = [];
     fixture.detectChanges();
   });
 
@@ -50,6 +52,30 @@ describe('GalleryComponent', () => {
   it('Actualizacion de las imagenes a mostrar (ri)', () => {
     filterText = 'ri';
     expect(component.updatePicturesToShow(filterText)).toBeUndefined();
+  });
+
+  it('Debe comparar ignorando mayusculas (pRueBa, Prueba)', () => {
+    let text1 = 'pRueBa';
+    let text2 = 'Prueba';
+    expect(component.includesIgnoreCase(text1, text2)).toBeTrue();
+  });
+
+  it('Debe comparar ignorando mayusculas (prueba, test)', () => {
+    let text1 = 'prueba';
+    let text2 = 'test';
+    expect(component.includesIgnoreCase(text1, text2)).toBeFalsy();
+  });
+
+  it('Debe comparar ignorando mayusculas (prueba, null)', () => {
+    let text1 = 'prueba';
+    let text2 = 'null';
+    expect(component.includesIgnoreCase(text1, text2)).toBeFalsy();
+  });
+
+  it('Debe comparar ignorando mayusculas (null, prueba)', () => {
+    let text1 = 'null';
+    let text2 = 'prueba';
+    expect(component.includesIgnoreCase(text1, text2)).toBeFalsy();
   });
 
 });

@@ -1,4 +1,8 @@
+<h1 class="gallery-title text-center font-size-xxxlarge">Buscador de imagenes</h1>
 <app-filter (changeInFilter)="updatePicturesToShow($event)"></app-filter>
-<app-picture (scroll)="onScroll()" class="flex row flex-wrap gallery-container"
-*ngIf="listPicture && listPicture.length > 0" [listPictures]="listPictureToShow"></app-picture>
+<app-picture class="flex row flex-wrap gallery-container"
+*ngIf="listPicturesToShow && listPicturesToShow.length > 0" [listPictures]="listPicturesToShow"></app-picture>
+<div *ngIf="listPicturesToShow && listPicturesToShow.length === 0" class="flex column width-100 align-items-center">
+  <p class="font-size-xlarge">Lo sentimos, no se han encontrado resultados</p>
+</div>
 

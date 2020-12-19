@@ -1,19 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Picture } from '../../model/picture.model';
 
 @Component({
   selector: 'app-picture',
   templateUrl: './picture.component.html',
-  styleUrls: ['./picture.component.scss']
+  styleUrls: ['./picture.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PictureComponent implements OnInit {
 
-  // Lista de imagenes a mostrar al usuario
+  @ViewChild(CdkVirtualScrollViewport) cdkVirtualScrollViewport: CdkVirtualScrollViewport;
   @Input() listPictures: Picture[];
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  reloadScroll() {
+    if(this.cdkVirtualScrollViewport) {
+      this.cdkVirtualScrollViewport.scrollToIndex(0);
+    }
   }
 
 }

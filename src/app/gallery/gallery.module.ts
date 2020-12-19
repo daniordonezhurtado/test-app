@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { GalleryRoutingModule } from './gallery-routing.module';
-import { PictureComponent } from './components/picture/picture.component';
-import { HttpClientModule } from '@angular/common/http';
-import { PictureService } from './service/picture/picture.service';
-import { GalleryComponent } from './components/gallery/gallery.component';
 import { FormsModule } from '@angular/forms';
+import { GalleryRoutingModule } from './gallery-routing.module';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { HttpClientModule } from '@angular/common/http';
 import { FilterComponent } from './components/filter/filter.component';
-
+import { PictureComponent } from './components/picture/picture.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { PictureService } from './service/picture/picture.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +18,7 @@ import { FilterComponent } from './components/filter/filter.component';
   imports: [
     FormsModule,
     CommonModule,
+    ScrollingModule,
     HttpClientModule,
     GalleryRoutingModule
   ],

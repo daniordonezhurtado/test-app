@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { PictureComponent } from './picture.component';
 
 describe('PictureComponent', () => {
@@ -8,7 +8,8 @@ describe('PictureComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PictureComponent ]
+      declarations: [ PictureComponent ],
+      imports: [ ScrollingModule ]
     })
     .compileComponents();
   });
@@ -21,5 +22,9 @@ describe('PictureComponent', () => {
 
   it('Debe crearse el cuadro', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Debe recargar el scroll', () => {
+    expect(component.reloadScroll()).toBeUndefined();
   });
 });

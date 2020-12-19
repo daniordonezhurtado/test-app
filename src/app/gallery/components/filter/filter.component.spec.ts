@@ -26,6 +26,6 @@ describe('FilterComponent', () => {
   });
 
   it('Emision de evento de cambio en el buscador', () => {
-    expect(component.updateListToShow()).toBeUndefined();
+    expect(component.updateListPicturesToShow()).toBeUndefined();
   });
 });

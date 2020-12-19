@@ -1,6 +1,8 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { Picture } from '../../model/picture.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { PictureComponent } from '../picture/picture.component';
 import { PictureService } from '../../service/picture/picture.service';
+import { Picture } from '../../model/picture.model';
+
 
 @Component({
   selector: 'app-gallery',
@@ -9,56 +11,50 @@ import { PictureService } from '../../service/picture/picture.service';
 })
 export class GalleryComponent implements OnInit {
 
-  isTest: boolean;
-  listPicture: Picture[];
-  listPictureToShow: Picture[];
+  @ViewChild(PictureComponent) pictureComponent: PictureComponent;
 
-  constructor(private pictureService: PictureService) {
-    this.listPicture = [];
-    this.listPictureToShow = [];
-  }
+  isTest: boolean;
+  listPictures: Picture[];
+  listPicturesToShow: Picture[];
+
+  constructor(private pictureService: PictureService) {}
 
   ngOnInit(): void {
-    /**
-     * Debido a la versión de node que uso,
-     * me da un error cuando realizo una llamada al
-     * servicio desde un componente, por ello pongo esta condición
-     */
     if(!this.isTest) {
       this.getListPicture();
     }
   }
 
-  /** Obtiene las imagenes y las mapea en un
-   * objeto que contendra todas y en otro que gestionara
-   * las imagenes que el usuario vera por pantalla
-   */
-  getListPicture() {
-    this.pictureService.getPicture().subscribe(
+  getListPicture(): void {
+    this.pictureService.getInformationOfPictures().subscribe(
       (response) => {
+        this.listPictures = [];
+        this.listPicturesToShow = [];
+
         if(response) {
-          Object.assign(this.listPicture, response);
-          Object.assign(this.listPictureToShow, this.listPicture);
+          Object.assign(this.listPictures, response);
+          Object.assign(this.listPicturesToShow, this.listPictures);
         }
       },
       (error) => {
         console.log(error);
+        console.log('Ha habido un error');
       });
   }
 
-  @HostListener('window:scroll', ['$event']) // for window scroll events
-  onScroll() {
-    //console.log(window.pageYOffset);
+  updatePicturesToShow(filterText: string): void {
+    this.listPicturesToShow = filterText ?
+      this.listPictures.filter(picture =>
+        this.includesIgnoreCase(picture.text, filterText) || picture.id === filterText)
+        : this.listPictures;
+
+    if(this.pictureComponent) {
+      this.pictureComponent.reloadScroll();
+    }
   }
 
-  /** Actualiza la lista de imagenes que vera el usuario por pantalla
-  *   cuando escriba en el buscador
-  */
-  updatePicturesToShow(filterText: string) {
-      this.listPictureToShow = filterText ?
-        this.listPicture.filter(picture =>
-          picture.text.includes(filterText) || picture.id === filterText
-          ): this.listPicture;
+  includesIgnoreCase(text1: string, text2: string): boolean {
+    return text1 && text2 && text1.toLowerCase().includes(text2.toLowerCase());
   }
 
 }

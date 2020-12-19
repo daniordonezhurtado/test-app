@@ -1,4 +1,6 @@
-<div class="flex column picture-container" *ngFor="let picture of listPictures">
-  <img *ngIf="picture" [src]="picture.photo" alt="{{picture.text}}">
-  <p *ngIf="picture">{{picture.text}}</p>
-</div>
+<cdk-virtual-scroll-viewport itemSize="150" class="pictures-container width-100 border-solid">
+  <div class="flex pictures-container-box align-items-center" *cdkVirtualFor="let picture of listPictures" tabindex="0">
+    <img class="pictures-container-box-img" loading="lazy" [src]="picture.photo" alt="{{picture.text}}">
+    <p class="font-size-large">{{picture.text}}</p>
+  </div>
+</cdk-virtual-scroll-viewport>
