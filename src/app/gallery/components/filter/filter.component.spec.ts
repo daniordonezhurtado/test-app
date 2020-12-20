@@ -21,11 +21,11 @@ describe('FilterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('Debe crearse el buscador', () => {
+  it('should create filter component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Emision de evento de cambio en el buscador', () => {
+  it('should emit change event on filter', () => {
     expect(component.updateListPicturesToShow()).toBeUndefined();
   });
 });

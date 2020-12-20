@@ -8,13 +8,15 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class FilterComponent implements OnInit {
 
   @Output()
-  changeInFilter: EventEmitter<string>  = new EventEmitter<string>();
+  changeInFilter: EventEmitter<string> = new EventEmitter<string>();
 
   filterText: string;
 
+  constructor() { }
+
   ngOnInit(): void {}
 
-  updateListPicturesToShow() {
+  updateListPicturesToShow(): void {
     this.changeInFilter.emit(this.filterText);
   }
 

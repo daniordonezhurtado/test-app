@@ -19,7 +19,7 @@ describe('PictureService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('test mockup service to get picture', () => {
+  it('test mockup service to get information of pictures', () => {
     expect(service.getInformationOfPictures()).toBeDefined();
   });
 

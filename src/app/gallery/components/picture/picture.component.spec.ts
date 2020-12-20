@@ -20,11 +20,11 @@ describe('PictureComponent', () => {
     fixture.detectChanges();
   });
 
-  it('Debe crearse el cuadro', () => {
+  it('should create the picture component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Debe recargar el scroll', () => {
+  it('should reload scroll', () => {
     expect(component.reloadScroll()).toBeUndefined();
   });
 });

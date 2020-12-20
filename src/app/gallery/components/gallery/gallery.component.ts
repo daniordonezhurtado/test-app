@@ -53,8 +53,8 @@ export class GalleryComponent implements OnInit {
     }
   }
 
-  includesIgnoreCase(text1: string, text2: string): boolean {
-    return text1 && text2 && text1.toLowerCase().includes(text2.toLowerCase());
+  includesIgnoreCase(textMain: string, textToCheck: string): boolean {
+    return textMain && textToCheck && textMain.toLowerCase().includes(textToCheck.toLowerCase());
   }
 
 }

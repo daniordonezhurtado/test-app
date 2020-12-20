@@ -40,42 +40,42 @@ describe('GalleryComponent', () => {
     fixture.detectChanges();
   });
 
-  it('Debe crearse la galeria', () => {
+  it('should create gallery component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Actualizacion de las imagenes a mostrar (null)', () => {
+  it('should update the pictures to show (null)', () => {
     filterText = null;
     expect(component.updatePicturesToShow(filterText)).toBeUndefined();
   });
 
-  it('Actualizacion de las imagenes a mostrar (ri)', () => {
+  it('should update the pictures to show (ri)', () => {
     filterText = 'ri';
     expect(component.updatePicturesToShow(filterText)).toBeUndefined();
   });
 
-  it('Debe comparar ignorando mayusculas (pRueBa, Prueba)', () => {
-    let text1 = 'pRueBa';
-    let text2 = 'Prueba';
-    expect(component.includesIgnoreCase(text1, text2)).toBeTrue();
+  it('should compare ignoring uppercase (pRueBa, Prueba)', () => {
+    let textMain = 'pRueBa';
+    let textToCheck = 'Prueba';
+    expect(component.includesIgnoreCase(textMain, textToCheck)).toBeTrue();
   });
 
-  it('Debe comparar ignorando mayusculas (prueba, test)', () => {
-    let text1 = 'prueba';
-    let text2 = 'test';
-    expect(component.includesIgnoreCase(text1, text2)).toBeFalsy();
+  it('should compare ignoring uppercase (prueba, test)', () => {
+    let textMain = 'prueba';
+    let textToCheck = 'test';
+    expect(component.includesIgnoreCase(textMain, textToCheck)).toBeFalsy();
   });
 
-  it('Debe comparar ignorando mayusculas (prueba, null)', () => {
-    let text1 = 'prueba';
-    let text2 = 'null';
-    expect(component.includesIgnoreCase(text1, text2)).toBeFalsy();
+  it('should compare ignoring uppercase (prueba, null)', () => {
+    let textMain = 'prueba';
+    let textToCheck = 'null';
+    expect(component.includesIgnoreCase(textMain, textToCheck)).toBeFalsy();
   });
 
-  it('Debe comparar ignorando mayusculas (null, prueba)', () => {
-    let text1 = 'null';
-    let text2 = 'prueba';
-    expect(component.includesIgnoreCase(text1, text2)).toBeFalsy();
+  it('should compare ignoring uppercase (null, prueba)', () => {
+    let textMain = 'null';
+    let textToCheck = 'prueba';
+    expect(component.includesIgnoreCase(textMain, textToCheck)).toBeFalsy();
   });
 
 });

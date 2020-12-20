@@ -17,7 +17,7 @@ export class PictureComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  reloadScroll() {
+  reloadScroll(): void {
     if(this.cdkVirtualScrollViewport) {
       this.cdkVirtualScrollViewport.scrollToIndex(0);
     }
