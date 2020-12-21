@@ -1,0 +1,7 @@
+{
+  "title": "Buscador de imagenes",
+  "textNotFound": "Lo sentimos, no se han encontrado resultados",
+  "filterText": {
+    "placeholder": "Buscar por id o texto de la imagen"
+  }
+}

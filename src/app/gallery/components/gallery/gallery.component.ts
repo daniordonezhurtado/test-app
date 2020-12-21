@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PictureComponent } from '../picture/picture.component';
 import { PictureService } from '../../service/picture/picture.service';
 import { Picture } from '../../model/picture.model';
+import { GalleryTextService } from '../../service/gallery-text/gallery-text.service';
+import { GalleryText } from '../../model/gallery-text.model';
+import { FilterText } from '../../model/filter-text.model';
 
 
 @Component({
@@ -16,19 +19,31 @@ export class GalleryComponent implements OnInit {
   isTest: boolean;
   listPictures: Picture[];
   listPicturesToShow: Picture[];
-  titleGallery: string;
-  textNotFound: string;
+  galleryText: GalleryText;
 
-  constructor(private pictureService: PictureService) {}
+  constructor(private pictureService: PictureService,
+    private galleryTextService: GalleryTextService) {}
 
   ngOnInit(): void {
 
-    this.titleGallery = 'Buscador de imagenes';
-    this.textNotFound = 'Lo sentimos, no se han encontrado resultados';
+    this.galleryText = new GalleryText();
+    this.galleryText.filterText = new FilterText();
 
     if(!this.isTest) {
+      this.getGalleryText();
       this.getListPicture();
     }
+  }
+
+  getGalleryText() {
+    this.galleryTextService.getTextOfGallery().subscribe(response => {
+      if(response) {
+        Object.assign(this.galleryText, response);
+
+        this.galleryText.filterText = this.galleryText.filterText ?
+          this.galleryText.filterText : new FilterText();
+      }
+    });
   }
 
   getListPicture(): void {

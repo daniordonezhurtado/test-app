@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { FilterText } from '../../model/filter-text.model';
 
 import { FilterComponent } from './filter.component';
 
@@ -18,6 +19,7 @@ describe('FilterComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FilterComponent);
     component = fixture.componentInstance;
+    component.filterText = new FilterText();
     fixture.detectChanges();
   });
 

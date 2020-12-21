@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FilterText } from '../../model/filter-text.model';
 
 @Component({
   selector: 'app-filter',
@@ -7,10 +8,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
 
+  @Input() filterText: FilterText;
+
   @Output()
   changeInFilter: EventEmitter<string> = new EventEmitter<string>();
 
-  filterText: string;
+  idOrTextToFilter: string;
   filterPlaceholder: string;
 
   constructor() { }
@@ -20,7 +23,7 @@ export class FilterComponent implements OnInit {
   }
 
   updateListPicturesToShow(): void {
-    this.changeInFilter.emit(this.filterText);
+    this.changeInFilter.emit(this.idOrTextToFilter);
   }
 
 }

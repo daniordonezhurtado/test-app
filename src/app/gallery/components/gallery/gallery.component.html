@@ -1,8 +1,8 @@
-<h1 class="gallery-title text-center font-size-xxxlarge">{{titleGallery}}</h1>
-<app-filter (changeInFilter)="updatePicturesToShow($event)"></app-filter>
+<h1 class="gallery-title text-center font-size-xxxlarge">{{galleryText.title}}</h1>
+<app-filter (changeInFilter)="updatePicturesToShow($event)" [filterText]="galleryText.filterText"></app-filter>
 <app-picture class="flex row flex-wrap gallery-container"
 *ngIf="listPicturesToShow && listPicturesToShow.length > 0" [listPictures]="listPicturesToShow"></app-picture>
 <div *ngIf="listPicturesToShow && listPicturesToShow.length === 0" class="flex column width-100 align-items-center">
-  <p class="font-size-xlarge">{{textNotFound}}</p>
+  <p class="font-size-xlarge">{{galleryText.textNotFound}}</p>
 </div>
 

@@ -8,6 +8,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { PictureComponent } from './components/picture/picture.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { PictureService } from './service/picture/picture.service';
+import { GalleryTextService } from './service/gallery-text/gallery-text.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PictureService } from './service/picture/picture.service';
     GalleryRoutingModule
   ],
   providers: [
-    PictureService
+    PictureService,
+    GalleryTextService
   ]
 })
 export class GalleryModule { }

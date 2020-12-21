@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  urlGetInformationOfPictures: './assets/mocks/getImage.json'
+  urlGetInformationOfPictures: './assets/mocks/getImage.json',
+  urlGetGalleryText: './assets/text/getTextOfGallery.json'
 };
 
 /*
