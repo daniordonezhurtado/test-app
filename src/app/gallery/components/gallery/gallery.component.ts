@@ -16,10 +16,16 @@ export class GalleryComponent implements OnInit {
   isTest: boolean;
   listPictures: Picture[];
   listPicturesToShow: Picture[];
+  titleGallery: string;
+  textNotFound: string;
 
   constructor(private pictureService: PictureService) {}
 
   ngOnInit(): void {
+
+    this.titleGallery = 'Buscador de imagenes';
+    this.textNotFound = 'Lo sentimos, no se han encontrado resultados';
+
     if(!this.isTest) {
       this.getListPicture();
     }

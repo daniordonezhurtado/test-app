@@ -11,10 +11,13 @@ export class FilterComponent implements OnInit {
   changeInFilter: EventEmitter<string> = new EventEmitter<string>();
 
   filterText: string;
+  filterPlaceholder: string;
 
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.filterPlaceholder = 'Buscar por id o texto de la imagen';
+  }
 
   updateListPicturesToShow(): void {
     this.changeInFilter.emit(this.filterText);
